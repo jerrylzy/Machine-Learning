@@ -82,7 +82,8 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.1;
+% Modified learning rate and iterations
+alpha = 1;
 num_iters = 50;
 
 % Init Theta and Run Gradient Descent 
@@ -105,6 +106,7 @@ fprintf('\n');
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
 newX = [1650 3];
+% Normalize using means and standard deviations from the training set
 for j = 1:size(newX, 2),
     newX(:, j) = (newX(:, j) - mu(j)) / sigma(j);
 end;
@@ -154,6 +156,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
+% Predict prices
 price = theta' * [1 1650 3]'; % You should change this
 
 

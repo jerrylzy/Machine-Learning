@@ -28,16 +28,13 @@ sigma = zeros(1, size(X, 2));
 
 columnSize = size(X, 2);
 
+% Normalize each feature of X
 for j = 1:columnSize,
     curX = X(:, j);
-    featureSize = std(curX);
+    stddev = std(curX);
     mu(j) = mean(curX);
-    sigma(j) = featureSize;
-    if featureSize == 0,
-        X_norm(:, j) = 0;
-    else
-        X_norm(:, j) = (curX - mu(j)) / featureSize;
-    endif;
+    sigma(j) = stddev;
+    X_norm(:, j) = (curX - mu(j)) / stddev;
 end;
 
 

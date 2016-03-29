@@ -12,6 +12,7 @@ theta = zeros(size(X, 2), 1);
 
 % ---------------------- Sample Solution ----------------------
 
+% Solve theta with normal equations.
 theta = pinv(X' * X) * X' * y;
 
 % -------------------------------------------------------------
