@@ -105,7 +105,9 @@ fprintf('\n');
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
 newX = [1650 3];
-[newX mu sigma] = featureNormalize(newX);
+for j = 1:size(newX, 2),
+    newX(:, j) = (newX(:, j) - mu(j)) / sigma(j);
+end;
 newX = [1 newX];
 price = theta' * newX'; % You should change this
 
