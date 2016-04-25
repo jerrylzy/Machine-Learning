@@ -19,15 +19,11 @@ grad = zeros(size(theta));
 
 h = @(x) sigmoid(x * theta);
 
-regCost = 0;
-regGrad = [0; theta(2:size(theta,1))];
-for i = 2:size(theta, 1)
-    regCost = regCost + theta(i)^2;
-end
+regCost = [0; theta(2:end).^2];
+regGrad = [0; theta(2:end)];
 
 J = 1 / m * (-y' * log(h(X)) - (1 - y)' * log(1 - h(X))) + ...
-    lambda / (2 * m) * regCost;
-
+    lambda / (2 * m) * sum(regCost);
 
 grad = 1 / m * X' * (h(X) - y) + lambda / m * regGrad;
 
